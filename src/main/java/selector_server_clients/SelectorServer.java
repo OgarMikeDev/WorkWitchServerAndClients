@@ -27,14 +27,11 @@ public class SelectorServer {
         while (true) {
             selector.select();
             Set<SelectionKey> selectedKeys = selector.selectedKeys();
-            for (SelectionKey selectionKey : selectedKeys) {
-                System.out.println("Current selection key \"" + selectionKey + "\"");
-            }
             Iterator<SelectionKey> iterator = selectedKeys.iterator();
 
             while (iterator.hasNext()) {
                 SelectionKey key = iterator.next();
-
+                System.out.println("Current key \"" + key + "\"");
                 if (key.isAcceptable()) {
                     ServerSocketChannel serverSocketChannelDuplicate =
                             (ServerSocketChannel) key.channel();
